@@ -1,11 +1,13 @@
 {
-  "name": "Flower-Project",
+  "name": "laboratoria-react-semana-03",
   "version": "1.0.0",
-  "description": "Single page Aplication with React",
+  "description": "Semana 3 Global State, Lifecycle , OOP",
   "main": "index.js",
-  "author": "Flor Tello and Flor Condori",
+  "author": "klujanrosas",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.16.2",
+    "material-ui": "^0.19.4",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
@@ -38,6 +40,9 @@
   },
   "scripts": {
     "start": "webpack-dev-server",
+    "build": "webpack --config webpack.config.prod.js --progress --profile --colors",
+    "deploy": "gh-pages -d ./dist -b gh-pages",
+    "clean": "del-cli ./dist/*.min..css && del-cli ./dist/*.min.js",
     "lint": "eslint ./app/"
   }
 }

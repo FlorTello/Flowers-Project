@@ -7,10 +7,10 @@ module.exports = {
   entry: [
     './app/index.js'
   ],
- output: {
-    filename: 'bundle.js',
+  output: {
     path: resolve(__dirname, 'public'),
     publicPath: '/',
+    filename: 'bundle.js',
   },
   devtool: 'cheap-module-source-map',
   devServer: {
@@ -44,7 +44,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolve(__dirname, 'public', 'index.html'),
+      template: resolve(__dirname, 'app', 'index.html'),
       filename: 'index.html'
     }),
     new OpenBrowserWebpackPlugin({
