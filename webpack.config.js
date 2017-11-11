@@ -7,10 +7,10 @@ module.exports = {
   entry: [
     './app/index.js'
   ],
-  output: {
+ output: {
+    filename: 'bundle.js',
     path: resolve(__dirname, 'public'),
     publicPath: '/',
-    filename: 'bundle.js',
   },
   devtool: 'cheap-module-source-map',
   devServer: {

@@ -1,21 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-const Page = ({ children }) => (
-  <div>
-    {children}
-  </div>
-)
-
-Page.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.node,
-    PropTypes.arrayOf([
-      PropTypes.node,
-      PropTypes.element
-    ])
-  ])
+const Page = ({children})=>{
+	return(
+		<div>
+			{children}
+		</div>
+	)
 }
 
 export default Page
