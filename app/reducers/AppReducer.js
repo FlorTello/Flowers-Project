@@ -1,7 +1,9 @@
+import {FILTER_TEXT_CHANGED} from '../actions/types'
+
 // Supongamos que esto recibimos del API en forma JSON
 const BOOKS = [
     {
-      isbn: "9781593275846",
+      id: "9781593275846",
       title: "Eloquent JavaScript, Second Edition",
       subtitle: "A Modern Introduction to Programming",
       author: "Marijn Haverbeke",
@@ -91,11 +93,39 @@ const BOOKS = [
 
 const INITIAL_STATE = {
   originalBooks: BOOKS, // lista original de productos
+  filterText: '', //texto que ingresa el usuario para buscar
+  filteredBooks : BOOKS //inicialmente no hay ningun filtro
 }
 
+//Este es nuestro AppReducer
 export default (state = INITIAL_STATE, action) => {
+  let newState = {}
   switch (action.type) {
+    case FILTER_TEXT_CHANGED:
+      newState = {
+        ...state,
+        filterText: action.payload
+      }
+      break;
     default:
       return state
   }
+
+  if(action.type === FILTER_TEXT_CHANGED){
+    console.log("AppReducer: "+action.payload)
+    console.log("state.originalBooks: ", state.originalBooks)
+    
+    const filteredBooks = state.originalBooks.filter((book, i)=>{
+      if(book.title.toLowerCase().indexOf(action.payload.trim().toLowerCase())!=-1){
+        return book;
+      }
+    });
+    console.log("filteredBooks: ",filteredBooks)
+    newState = {
+      ...newState,
+      filteredBooks
+    }
+  }
+  console.log("newState: ",newState);
+  return newState
 }

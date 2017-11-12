@@ -4,23 +4,22 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import Page from './Page'
-import ListBooks from './ListBooks'
+import OnlineLibrary from './OnlineLibrary'
 
 const Main = ({ books}) => {
 	console.log(books)
  	return (
    		<Page>
-   			<ListBooks  books = {books}/>
+   			<OnlineLibrary  books = {books}/>
    		</Page>
 	)
 }
 
-
 const mapStateToProps = (state) => {
-  const {originalBooks} = state.AppReducer
+  const {filteredBooks} = state.AppReducer
 
   return {
-    books:  originalBooks
+    books:  filteredBooks
   }
 }
 
