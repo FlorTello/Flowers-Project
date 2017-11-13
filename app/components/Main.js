@@ -6,10 +6,14 @@ import { connect } from 'react-redux'
 import Page from './Page'
 import OnlineLibrary from './OnlineLibrary'
 
+import Welcome from './Welcome'
+import Categories from './Categories'
+
 const Main = ({ books}) => {
 	console.log(books)
  	return (
    		<Page>
+			<Categories/>
    			<OnlineLibrary  books = {books}/>
    		</Page>
 	)
