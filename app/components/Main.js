@@ -6,24 +6,24 @@ import { connect } from 'react-redux'
 import Page from './Page'
 import OnlineLibrary from './OnlineLibrary'
 
-import Welcome from './Welcome'
-import Categories from './Categories'
+//import Welcome from './Welcome'
 
-const Main = ({ books}) => {
+const Main = ({ books,categories,categorieSelected}) => {
 	console.log(books)
  	return (
    		<Page>
-			<Categories/>
-   			<OnlineLibrary  books = {books}/>
+   			<OnlineLibrary  books={books} categories={categories} categorieSelected={categorieSelected}/>
    		</Page>
 	)
 }
 
 const mapStateToProps = (state) => {
-  const {filteredBooks} = state.AppReducer
+  const {filteredBooks,categories,categorieSelected} = state.AppReducer
 
   return {
-    books:  filteredBooks
+    books:  filteredBooks,
+    categories,
+    categorieSelected
   }
 }
 

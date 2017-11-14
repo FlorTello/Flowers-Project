@@ -1,4 +1,4 @@
-import {FILTER_TEXT_CHANGED} from '../actions/types'
+import {FILTER_TEXT_CHANGED, FILTER_CATEGORY_SELECTED} from '../actions/types'
 
 // Supongamos que esto recibimos del API en forma JSON
 const BOOKS = [
@@ -12,7 +12,8 @@ const BOOKS = [
       pages: 472,
       description: "JavaScript lies at the heart of almost every modern web application, from social apps to the newest browser-based games. Though simple for beginners to pick up and play with, JavaScript is a flexible, complex language that you can use to build full-scale applications.",
       website: "http://eloquentjavascript.net/",
-      img: "http://eloquentjavascript.net/img/cover.png"
+      img: "http://eloquentjavascript.net/img/cover.png",
+      categories: [ 1,2]
     },
     {
       id: "9781449331818",
@@ -24,7 +25,8 @@ const BOOKS = [
       pages: 254,
       description: "With Learning JavaScript Design Patterns, you'll learn how to write beautiful, structured, and maintainable JavaScript by applying classical and modern design patterns to the language. If you want to keep your code efficient, more manageable, and up-to-date with the latest best practices, this book is for you.",
       website: "http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/",
-      img: "http://eloquentjavascript.net/img/cover.png"
+      img: "http://eloquentjavascript.net/img/cover.png",
+      categories: [3.4]
 
     },
     {
@@ -37,7 +39,8 @@ const BOOKS = [
       pages: 460,
       description: "Like it or not, JavaScript is everywhere these days-from browser to server to mobile-and now you, too, need to learn the language or dive deeper than you have. This concise book guides you into and through JavaScript, written by a veteran programmer who once found himself in the same position.",
       website: "http://speakingjs.com/",
-      img: "http://eloquentjavascript.net/img/cover.png"
+      img: "http://eloquentjavascript.net/img/cover.png",
+      categories: [5,6]
 
     },
     {
@@ -50,7 +53,8 @@ const BOOKS = [
       pages: 254,
       description: "Take advantage of JavaScript's power to build robust web-scale or enterprise applications that are easy to extend and maintain. By applying the design patterns outlined in this practical book, experienced JavaScript developers will learn how to write flexible and resilient code that's easier-yes, easier-to work with as your code base grows.",
       website: "http://chimera.labs.oreilly.com/books/1234000000262/index.html",
-      img: "http://eloquentjavascript.net/img/cover.png"
+      img: "http://eloquentjavascript.net/img/cover.png",
+      categories:[1,2]
 
     },
     {
@@ -63,7 +67,8 @@ const BOOKS = [
       pages: 352,
       description: "ECMAScript 6 represents the biggest update to the core of JavaScript in the history of the language. In Understanding ECMAScript 6, expert developer Nicholas C. Zakas provides a complete guide to the object types, syntax, and other exciting changes that ECMAScript 6 brings to JavaScript.",
       website: "https://leanpub.com/understandinges6/read",
-      img: "http://eloquentjavascript.net/img/cover.png"
+      img: "http://eloquentjavascript.net/img/cover.png",
+      categories:[3,4]
 
     },
     {
@@ -76,7 +81,8 @@ const BOOKS = [
       pages: 278,
       description: "No matter how much experience you have with JavaScript, odds are you don’t fully understand the language. As part of the You Don’t Know JS series, this compact guide focuses on new features available in ECMAScript 6 (ES6), the latest version of the standard upon which JavaScript is built.",
       website: "https://github.com/getify/You-Dont-Know-JS/tree/master/es6%20&%20beyond",
-      img: "http://eloquentjavascript.net/img/cover.png"
+      img: "http://eloquentjavascript.net/img/cover.png",
+      categories:[5,6]
 
     },
     {
@@ -89,8 +95,8 @@ const BOOKS = [
       pages: 234,
       description: "This pocket guide is the perfect on-the-job companion to Git, the distributed version control system. It provides a compact, readable introduction to Git for new users, as well as a reference to common commands and procedures for those of you with Git experience.",
       website: "http://chimera.labs.oreilly.com/books/1230000000561/index.html",
-      img: "http://eloquentjavascript.net/img/cover.png"
-
+      img: "http://eloquentjavascript.net/img/cover.png",
+      categories:[2,3]
     },
     {
       id: "9781449337711",
@@ -102,7 +108,8 @@ const BOOKS = [
       pages: 538,
       description: "Design and build Web APIs for a broad range of clients—including browsers and mobile devices—that can adapt to change over time. This practical, hands-on guide takes you through the theory and tools you need to build evolvable HTTP services with Microsoft’s ASP.NET Web API framework. In the process, you’ll learn how design and implement a real-world Web API.",
       website: "http://chimera.labs.oreilly.com/books/1234000001708/index.html",
-      img: "http://eloquentjavascript.net/img/cover.png"
+      img: "http://eloquentjavascript.net/img/cover.png",
+      categories:[4,5]
 
     }
   ]
@@ -111,7 +118,47 @@ const BOOKS = [
 const INITIAL_STATE = {
   originalBooks: BOOKS, // lista original de productos
   filterText: '', //texto que ingresa el usuario para buscar
-  filteredBooks : BOOKS //inicialmente no hay ningun filtro
+  filteredBooks : BOOKS, //inicialmente no hay ningun filtro
+  categories :[
+    {
+      id: 1,
+      url: 'https://image.freepik.com/free-photo/web-design-concepts-with-blurred-background_1134-82.jpg',
+      title: 'Design',
+      width: '40%',
+    },
+    {
+      id: 2,
+      url: 'https://tr2.cbsistatic.com/hub/i/r/2017/10/16/eea1415d-b05a-46ba-aba7-7adc472f6a1d/resize/770x/cf16b9e0914c54f918ca8f3eacf691fc/database.jpg',
+      title: 'Programing',
+      width: '30%',
+    },
+    {
+      id: 3,
+      url: 'https://tr2.cbsistatic.com/hub/i/r/2016/02/23/081e5075-5499-4f93-afbe-22830aacd56a/resize/770x/b55caf346264ae7134deb0d3b7859bfc/ai.jpg',
+      title: 'Artificial Intelligence',
+      width: '30%',
+    },
+    {
+      id: 4,
+      url: 'https://www.ayokasystems.com/wp-content/uploads/database.jpg',
+      title: 'Data Base',
+      width: '30%'
+    },
+    {
+      id: 5,
+      url: 'http://statistica.io/wordpress/wp-content/uploads/ndaa-analytics.jpg',
+      title: 'Data Science',
+      width: '30%'
+    },
+    {
+      id: 6,
+      url: 'https://getcrm.com/uploads/machine_learning.jpg',
+      title: 'Machine Learning',
+      width: '30%'
+    }
+  ],
+  categorieSelected: null,
+  filteredBooksCategory:[]
 }
 
 //Este es nuestro AppReducer
@@ -124,6 +171,11 @@ export default (state = INITIAL_STATE, action) => {
         filterText: action.payload
       }
       break;
+    case FILTER_CATEGORY_SELECTED:
+      newState = {
+        ...state,
+        categorieSelected: action.payload
+      }
     default:
       return state
   }
@@ -133,7 +185,7 @@ export default (state = INITIAL_STATE, action) => {
     console.log("state.originalBooks: ", state.originalBooks)
 
     const filteredBooks = state.originalBooks.filter((book, i)=>{
-      if(book.title.toLowerCase().indexOf(action.payload.trim().toLowerCase())!=-1){
+      if(book.title.toLowerCase().indexOf(action.payload.trim().toLowerCase())!=-1 || book.author.toLowerCase().indexOf(action.payload.trim().toLowerCase())!=-1){
         return book;
       }
     });
@@ -143,6 +195,24 @@ export default (state = INITIAL_STATE, action) => {
       filteredBooks
     }
   }
+
+  if(action.type === FILTER_CATEGORY_SELECTED){
+    console.log(action.payload);
+    const filteredBooksCategory = state.originalBooks.filter((book, i)=>{
+      if(book.categories.indexOf(action.payload)!= -1){
+        return book;
+      }
+    });
+    console.log(filteredBooksCategory);
+
+     newState = {
+      ...newState,
+      filteredBooksCategory
+    }
+
+  }
+
+
   console.log("newState: ",newState);
   return newState
 }
