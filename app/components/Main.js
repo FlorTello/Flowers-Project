@@ -8,22 +8,35 @@ import OnlineLibrary from './OnlineLibrary'
 
 //import Welcome from './Welcome'
 
-const Main = ({ books,categories,categorieSelected}) => {
-	console.log(books)
- 	return (
-   		<Page>
-   			<OnlineLibrary  books={books} categories={categories} categorieSelected={categorieSelected}/>
-   		</Page>
-	)
+class Main extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  render(){
+    const {books,categories,categorySelected} = this.props;
+    return (
+      <Page>
+        <OnlineLibrary  
+          books={books} 
+          categories={categories}
+          categorySelected={categorySelected}
+        />
+      </Page>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
-  const {filteredBooks,categories,categorieSelected} = state.AppReducer
+  const {
+    categories,
+    categorySelected,
+    filteredBooksCategory
+  } = state.AppReducer
 
   return {
-    books:  filteredBooks,
+    books: filteredBooksCategory,
     categories,
-    categorieSelected
+    categorySelected
   }
 }
 

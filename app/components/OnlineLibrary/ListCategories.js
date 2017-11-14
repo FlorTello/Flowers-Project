@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ItemCategorie from './ItemCategorie'
+import ItemCategory from './ItemCategory'
 
 const ListCategories =({categories})=> {
   const cat = categories.map((cat,i)=>{
-    return(<ItemCategorie key={cat.id} categorie= {cat} />)
+    return(<ItemCategory key={cat.id} category= {cat} />)
   });
 
   return (

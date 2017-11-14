@@ -9,6 +9,7 @@ export const filterTextChanged = (text)=>{
 }
 
 export const filterCategorySelected = (id)=>{
+	console.log("action: ", id)
 	return{
 		type: FILTER_CATEGORY_SELECTED,
 		payload: id

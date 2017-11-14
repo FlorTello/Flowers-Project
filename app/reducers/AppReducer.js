@@ -118,7 +118,7 @@ const BOOKS = [
 const INITIAL_STATE = {
   originalBooks: BOOKS, // lista original de productos
   filterText: '', //texto que ingresa el usuario para buscar
-  filteredBooks : BOOKS, //inicialmente no hay ningun filtro
+  filteredSearchBooks : [], //inicialmente no hay ningun filtro
   categories :[
     {
       id: 1,
@@ -157,7 +157,7 @@ const INITIAL_STATE = {
       width: '30%'
     }
   ],
-  categorieSelected: null,
+  categorySelected: null,
   filteredBooksCategory:[]
 }
 
@@ -174,45 +174,44 @@ export default (state = INITIAL_STATE, action) => {
     case FILTER_CATEGORY_SELECTED:
       newState = {
         ...state,
-        categorieSelected: action.payload
+        categorySelected: action.payload
       }
+      break;
     default:
       return state
   }
 
   if(action.type === FILTER_TEXT_CHANGED){
-    console.log("AppReducer: "+action.payload)
-    console.log("state.originalBooks: ", state.originalBooks)
+    console.log("AppReducer: ",action.payload)
 
-    const filteredBooks = state.originalBooks.filter((book, i)=>{
+    const filteredSearchBooks = state.filteredBooksCategory.filter((book, i)=>{
       if(book.title.toLowerCase().indexOf(action.payload.trim().toLowerCase())!=-1 || book.author.toLowerCase().indexOf(action.payload.trim().toLowerCase())!=-1){
         return book;
       }
     });
-    console.log("filteredBooks: ",filteredBooks)
+    console.log("filteredBooks: ",filteredSearchBooks)
     newState = {
       ...newState,
-      filteredBooks
+      filteredSearchBooks
     }
   }
 
   if(action.type === FILTER_CATEGORY_SELECTED){
-    console.log(action.payload);
+    console.log("AppReducer filter Category: ",action.payload);
     const filteredBooksCategory = state.originalBooks.filter((book, i)=>{
-      if(book.categories.indexOf(action.payload)!= -1){
+      if(book.categories.indexOf(parseInt(action.payload))!= -1){
         return book;
       }
     });
-    console.log(filteredBooksCategory);
 
      newState = {
       ...newState,
-      filteredBooksCategory
+      filteredBooksCategory,
+      filteredSearchBooks:filteredBooksCategory
     }
 
   }
 
-
   console.log("newState: ",newState);
-  return newState
+  return newState;
 }

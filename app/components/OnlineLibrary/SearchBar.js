@@ -4,9 +4,14 @@ import {filterTextChanged} from '../../actions'
 import TextField from 'material-ui/TextField';
 
 class SearchBar extends React.Component{
-
 	constructor(props){
 		super(props);
+		this.handleChange = this.handleChange.bind(this)
+	}
+
+	handleChange(e){
+		console.log(e.target.value);
+		this.props.setFilterText(e.target.value);
 	}
 
 	render(){
@@ -18,15 +23,10 @@ class SearchBar extends React.Component{
 		}
 		return(
 			<form style={style.form}>
-			<TextField
-					placeholder= "Read Now"
-					value={this.props.filterText}
-					onChange={(e)=>{
-							console.log(e.target.value);
-							this.props.setFilterText(e.target.value)
-						}
-
-					}
+				<TextField
+						placeholder= "Read Now"
+						value={this.props.filterText}
+						onChange={this.handleChange}
 				/>
 			</form>
 		)

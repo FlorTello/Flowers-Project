@@ -2,9 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {filterCategorySelected} from '../../actions'
 
-class ItemCategorie extends React.Component{
+class ItemCategory extends React.Component{
 	constructor(props){
 		super(props);
+		this.handleClick= this.handleClick.bind(this);
 	}
 
 	handleClick (e){
@@ -12,20 +13,16 @@ class ItemCategorie extends React.Component{
 		this.props.setSelectedCategory(e.target.id)
 	}
 	render(){
-		const {categorie} = this.props
-		console.log(this.props)
+		const {category} = this.props
+		console.log("Componente ItemCategory: ",this.props);
 		return(
-			<li id={categorie.id} onClick={this.handleClick}>
-				{categorie.title}
+			<li 
+				id={category.id} 
+				onClick={this.handleClick}
+			>
+				{category.title}
 			</li>
 		);
-	}
-}
-
-const mapStateToProps = (state)=>{
-	const {categorieSelected} = state.AppReducer;
-	return{
-		categorieSelected
 	}
 }
 
@@ -37,9 +34,9 @@ const mapDispatchToProps = (dispatch)=>{
 	}
 }
 
-const ItemCategorieWithRedux = connect(
-	mapStateToProps,
+const ItemCategoryWithRedux = connect(
+	null,
 	mapDispatchToProps
-	)(ItemCategorie)
+)(ItemCategory)
 
-export default ItemCategorieWithRedux
+export default ItemCategoryWithRedux
