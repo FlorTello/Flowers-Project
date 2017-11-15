@@ -1,4 +1,4 @@
-import {FILTER_TEXT_CHANGED, FILTER_CATEGORY_SELECTED} from '../actions/types'
+import {FILTER_TEXT_CHANGED, FILTER_CATEGORY_SELECTED, SET_MODAL, OPEN_MODAL} from '../actions/types'
 
 // Supongamos que esto recibimos del API en forma JSON
 const BOOKS = [
@@ -158,7 +158,10 @@ const INITIAL_STATE = {
     }
   ],
   categorieSelected: null,
-  filteredBooksCategory:[]
+  filteredBooksCategory:[],
+  selectedBookModal: null,
+  modalBook: null,
+  openModal:false
 }
 
 //Este es nuestro AppReducer
@@ -176,6 +179,13 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         categorieSelected: action.payload
       }
+      break;
+    case SET_MODAL:
+    newState = {
+      ...state,
+      selectedBookModal: action.payload
+    }
+    break;
     default:
       return state
   }
@@ -212,6 +222,33 @@ export default (state = INITIAL_STATE, action) => {
 
   }
 
+  if(action.type === SET_MODAL){
+    console.log(action.payload);
+    const modalBook = state.originalBooks.filter((book, i)=>{
+      if(book.id.indexOf(action.payload)!= -1){
+        return book;
+      }
+    });
+    console.log(modalBook);
+
+     newState = {
+      ...newState,
+      modalBook
+    }
+
+  }
+
+  if(action.type === OPEN_MODAL){
+    console.log(action.payload);
+    const openModal = true;
+    console.log(openModal);
+
+     newState = {
+      ...newState,
+      openModal
+    }
+
+  }
 
   console.log("newState: ",newState);
   return newState

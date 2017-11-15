@@ -1,8 +1,9 @@
 import React from 'react'
-
+import {connect} from 'react-redux'
 import ListBooks from './ListBooks'
 import SearchBar from './SearchBar'
 import ListCategories from './ListCategories'
+import DetailBook from './DetailBook'
 
 class OnlineLibrary extends React.Component{
 	constructor(props){
@@ -21,7 +22,12 @@ class OnlineLibrary extends React.Component{
 				</div>
 			)
 		}else{
-			component = <ListCategories categories={categories}/>
+			component = (
+				<div>
+					<DetailBook openModal={this.props.openModal}/>
+					<ListBooks books={books}/>
+				</div>
+			)
 		}
 
 		return(
@@ -32,4 +38,12 @@ class OnlineLibrary extends React.Component{
 	}
 }
 
+const mapStateToProps = (state)=>{
+	const {openModal} = state.AppReducer;
+	return{
+		openModal
+	}
+}
+
 export default OnlineLibrary
+

@@ -9,7 +9,7 @@ class ItemCategorie extends React.Component{
 
 	handleClick (e){
 		console.log(e.target.id)
-		this.props.setSelectedCategory(e.target.id)
+		//this.props.setSelectedCategory(e.target.id)
 	}
 	render(){
 		const {categorie} = this.props
