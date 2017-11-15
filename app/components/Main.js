@@ -6,27 +6,60 @@ import { connect } from 'react-redux'
 import Page from './Page'
 import OnlineLibrary from './OnlineLibrary'
 
-//import Welcome from './Welcome'
+import Welcome from './OnlineLibrary/Welcome'
 
-const Main = ({ books,categories,categorieSelected}) => {
-	console.log(books)
- 	return (
-   		<Page>
-   			<OnlineLibrary  books={books} categories={categories} categorieSelected={categorieSelected}/>
-   		</Page>
-	)
+import {setPage} from '.././actions'
+
+class Main extends React.Component{
+	constructor(props){
+		super(props);
+	}
+
+	componentDidMount() {
+    	setTimeout(()=>{
+    		console.log("otro componente");
+    		this.props.setPage(2);
+    	}, 3000)
+    }
+
+	render(){
+		const { books,categories,categorieSelected} = this.props;
+		let component = null;
+
+		if(this.props.page === 1){
+			component = <Welcome />
+		}else{
+			component = <OnlineLibrary  books={books} categories={categories} categorieSelected={categorieSelected}/>
+		}
+	
+		return(
+	   		<Page>
+	   			{component}
+	   		</Page>
+		)
+	}
+	
 }
 
 const mapStateToProps = (state) => {
-  const {filteredBooks,categories,categorieSelected} = state.AppReducer
+  const {filteredBooks,categories,categorieSelected,page} = state.AppReducer
 
   return {
     books:  filteredBooks,
     categories,
-    categorieSelected
+    categorieSelected,
+    page
   }
 }
 
-const MainWithRedux = connect(mapStateToProps)(Main)
+const mapDispatchToProps = (dispatch) => {
+    return {
+      setPage(id) {
+        dispatch(setPage(id))
+      }
+    }
+}
+
+const MainWithRedux = connect(mapStateToProps, mapDispatchToProps)(Main)
 
 export default MainWithRedux

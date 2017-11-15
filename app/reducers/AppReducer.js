@@ -1,4 +1,4 @@
-import {FILTER_TEXT_CHANGED, FILTER_CATEGORY_SELECTED} from '../actions/types'
+import {FILTER_TEXT_CHANGED, FILTER_CATEGORY_SELECTED,SET_PAGE} from '../actions/types'
 
 // Supongamos que esto recibimos del API en forma JSON
 const BOOKS = [
@@ -158,7 +158,8 @@ const INITIAL_STATE = {
     }
   ],
   categorieSelected: null,
-  filteredBooksCategory:[]
+  filteredBooksCategory:[],
+  page: 1
 }
 
 //Este es nuestro AppReducer
@@ -176,6 +177,13 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         categorieSelected: action.payload
       }
+      break;
+    case SET_PAGE:
+      newState = {
+        ...state,
+        page: action.payload
+      }
+      break;
     default:
       return state
   }
@@ -212,6 +220,9 @@ export default (state = INITIAL_STATE, action) => {
 
   }
 
+  if(action.type === SET_PAGE){
+    console.log("AppReducer- cambiando de componente")
+  }
 
   console.log("newState: ",newState);
   return newState
