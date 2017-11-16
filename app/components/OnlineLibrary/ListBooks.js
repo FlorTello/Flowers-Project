@@ -1,23 +1,22 @@
 import React from 'react'
-
 import ItemBook from './ItemBook'
 
-class ListBooks extends React.Component{
-	constructor(props){
-		super(props)
-	}
+import { withStyles } from 'material-ui/styles'
+import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
+import Button from 'material-ui/Button'
+import Typography from 'material-ui/Typography'
+import Grid from 'material-ui/Grid'
 
-	render(){
-		const {books} = this.props;
-		const item = books.map((book,i)=>{
-			return(<ItemBook key={book.id} book={book} />)
-		})
-		return(
-			<ul>
-				{item}
-			</ul>
-		)
-	}		
+const ListBooks = ({books}) => {
+	const item = books.map((book,i) => {
+		return(<ItemBook key={book.id} book={book} />)
+	})
+	
+	return(
+		<Grid container spacing={24}>
+			{item}
+		</Grid>
+	);
 }
 
 export default ListBooks

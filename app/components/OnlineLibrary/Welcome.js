@@ -1,6 +1,7 @@
 import React from 'react'
+
 import Grid from 'material-ui/Grid'
-import Button from 'material-ui/Button';
+import Button from 'material-ui/Button'
 
 const style = {
   container : {
@@ -23,17 +24,16 @@ const style = {
 }
 
 const Welcome = ()=> (
-  	<div container style = {style.container}>
+  <div container style = {style.container}>
     <img src = "https://cdn0.iconfinder.com/data/icons/Android-R2-png/512/Books-Android-R.png"/>
     <div style = {style.frase}>
-    <h4>KEEP</h4>
-    <h4>CALM</h4>
-    <h6>AND</h6>
-    <h4>READ</h4>
-    <h4>BOOKS</h4>
+      <h4>KEEP</h4>
+      <h4>CALM</h4>
+      <h6>AND</h6>
+      <h4>READ</h4>
+      <h4>BOOKS</h4>
     </div>
-
   </div>
 );
 
-export default Welcome
+export default Welcome;

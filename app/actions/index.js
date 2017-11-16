@@ -1,7 +1,9 @@
 import {
 	FILTER_TEXT_CHANGED,
 	FILTER_CATEGORY_SELECTED,
-	SET_PAGE
+	SET_PAGE,
+	SET_MODAL,
+	TOGGLE_MODAL
 } from './types'
 
 //action creators
@@ -12,17 +14,28 @@ export const filterTextChanged = (text)=>{
 	}
 }
 
-export const filterCategorySelected = (id)=>{
-	console.log("action: ", id)
+export const filterCategorySelected = (idCategory)=>{
 	return{
 		type: FILTER_CATEGORY_SELECTED,
-		payload: id
+		payload: idCategory
 	}
 }
 
-export const setPage= (id)=>{
+export const setPage= (index)=>{
 	return{
 		type: SET_PAGE,
-		payload: id
+		payload: index
+	}
+}
+export const setModal = (idBook)=>{
+	return{
+		type: SET_MODAL,
+		payload: idBook
+	}
+}
+
+export const toggleModal = ()=>{
+	return{
+		type: TOGGLE_MODAL
 	}
 }

@@ -4,11 +4,12 @@ import {connect} from 'react-redux'
 import ListBooks from './ListBooks'
 import SearchBar from './SearchBar'
 import ListCategories from './ListCategories'
+import Modal from './Modal'
 
 class OnlineLibrary extends React.Component{
 	constructor(props){
 		super(props);
-	}
+	};
 
 	render(){
 		const {books,categories,categorySelected} = this.props;
@@ -19,18 +20,22 @@ class OnlineLibrary extends React.Component{
 				<div>
 					<SearchBar/>
 					<ListBooks books={books}/>
+					<Modal />
 				</div>
 			)
 		}else{
-			children = <ListCategories categories={categories}/>
+			children = (
+				<div>
+					<ListCategories categories={categories}/>
+				</div>
+			)
 		}
-
 		return(
 			<div>
 				{children}
 			</div>
 		)
-	}
+	};
 }
 
 const mapStateToProps = (state) => {
@@ -48,3 +53,4 @@ const mapStateToProps = (state) => {
 const OnlineLibraryWithRedux = connect(mapStateToProps)(OnlineLibrary)
 
 export default OnlineLibraryWithRedux
+

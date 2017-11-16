@@ -1,26 +1,29 @@
 import React from 'react'
 import {connect} from 'react-redux'
+
 import {filterTextChanged} from '../../actions'
-import TextField from 'material-ui/TextField';
+
+import TextField from 'material-ui/TextField'
 
 class SearchBar extends React.Component{
 	constructor(props){
 		super(props);
 		this.handleChange = this.handleChange.bind(this)
-	}
+	};
 
 	handleChange(e){
 		console.log(e.target.value);
 		this.props.setFilterText(e.target.value);
-	}
+	};
 
 	render(){
-		const style={
+		const style = {
 			form:{
 				margin: '10px 0',
 				width:'100%'
 			}
 		}
+
 		return(
 			<form style={style.form}>
 				<TextField
@@ -51,6 +54,6 @@ const mapDispatchToProps = (dispatch)=>{
 const SearchBarWithRedux = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(SearchBar)
+)(SearchBar);
 
 export default SearchBarWithRedux

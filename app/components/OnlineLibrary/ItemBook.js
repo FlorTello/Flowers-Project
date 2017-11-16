@@ -1,17 +1,82 @@
 import React from 'react'
 
+import { withStyles } from 'material-ui/styles'
+import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
+import Button from 'material-ui/Button'
+import Typography from 'material-ui/Typography'
+import Grid from 'material-ui/Grid'
+
+import {connect} from 'react-redux'
+import {toggleModal,setModal} from '../../actions'
+
 class ItemBook extends React.Component{
 	constructor(props){
-		super(props)
-	}
+		super(props);
+		this.handleClick = this.handleClick.bind(this);
+	};
+	
+	handleClick(e){
+		console.log(e.currentTarget);
+		this.props.toggleModal();
+		this.props.setModal(e.currentTarget.parentElement.parentElement.id);
+	};
+
 	render(){
 		const {book} = this.props
+		const styles = {
+			root: {
+				flexGrow: 1,
+				marginTop: 30
+			},
+			item: {
+				padding: 16,
+				textAlign: 'center'
+			},
+			media: {
+				height:574
+			}
+		};
+
 		return(
-			<li id={book.id}>
-				{book.title}
-			</li>
+			<Grid item xs={6} sm={6} style={styles.item}>
+				<Card id={book.id}>
+					<CardMedia
+						style={styles.media}
+						image={book.img}
+						title="Contemplative Repbook"
+					/>
+					<CardContent>
+						<h4>{book.title}</h4>
+						<p>{book.subtitle}</p>
+					</CardContent>
+					<CardActions>
+						<Button dense color="primary">
+							Share
+						</Button>
+						<Button dense color="primary" onClick={this.handleClick}>
+							Learn More
+						</Button>
+					</CardActions>
+				</Card>
+			</Grid>
 		)
+	};
+}
+
+const mapDispatchToProps = (dispatch)=>{
+	return{
+		setModal(id){
+			dispatch(setModal(id))
+		},
+		toggleModal(){
+			dispatch(toggleModal())
+		}
 	}
 }
 
-export default ItemBook
+const ItemBookWithRedux = connect(
+	null,
+	mapDispatchToProps
+)(ItemBook);
+
+export default ItemBookWithRedux;

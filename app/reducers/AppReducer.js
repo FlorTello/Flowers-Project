@@ -1,7 +1,9 @@
 import {
   FILTER_TEXT_CHANGED,
   FILTER_CATEGORY_SELECTED,
-  SET_PAGE
+  SET_PAGE,
+  SET_MODAL,
+  TOGGLE_MODAL
 } from '../actions/types'
 
 // Supongamos que esto recibimos del API en forma JSON
@@ -120,7 +122,6 @@ const BOOKS = [
 
 const INITIAL_STATE = {
   page: 1,
-  originalBooks: BOOKS, // lista original de productos
   categories :[
     {
       id: 1,
@@ -159,10 +160,13 @@ const INITIAL_STATE = {
       width: '30%'
     }
   ],
+  originalBooks: BOOKS, // lista original de productos
   categorieSelected: null,
   filteredBooksCategory:[],
   filterText: '', //texto que ingresa el usuario para buscar
-  filteredSearchBooks : []//inicialmente no hay ningun filtro
+  filteredSearchBooks : [],//inicialmente no hay ningun filtro
+  bookModal: null,
+  stateModal: false 
 }
 
 //Este es nuestro AppReducer
@@ -188,45 +192,71 @@ export default (state = INITIAL_STATE, action) => {
         page: action.payload
       }
       break;
+    case TOGGLE_MODAL:
+      newState = {
+        ...state,
+        stateModal: !state.stateModal
+      }
+      break;
+    case SET_MODAL:
+      newState = {
+        ...state
+      }
+      break;
     default:
       return state
   }
 
   if(action.type === FILTER_TEXT_CHANGED){
-    console.log("AppReducer-filterTextChanged: ",action.payload)
+    console.log("AppReducer-filterTextChanged: ",action.payload);
 
     const filteredSearchBooks = state.filteredBooksCategory.filter((book, i)=>{
       if(book.title.toLowerCase().indexOf(action.payload.trim().toLowerCase())!=-1 || book.author.toLowerCase().indexOf(action.payload.trim().toLowerCase())!=-1){
         return book;
       }
     });
-    console.log("filteredBooks: ",filteredSearchBooks)
+
     newState = {
       ...newState,
       filteredSearchBooks
-    }
+    };
   }
 
   if(action.type === FILTER_CATEGORY_SELECTED){
-    console.log("AppReducer filter Category: ",action.payload);
+    console.log("AppReducer-filterCategory: ",action.payload);
     const filteredBooksCategory = state.originalBooks.filter((book, i)=>{
       if(book.categories.indexOf(parseInt(action.payload))!= -1){
         return book;
       }
     });
 
-     newState = {
+    newState = {
       ...newState,
       filteredBooksCategory,
       filteredSearchBooks:filteredBooksCategory
-    }
+    };
 
   }
 
   if(action.type === SET_PAGE){
-    console.log("AppReducer- cambiando de componente")
+    console.log("AppReducer-CambiandoComponent")
   }
 
-  console.log("newState: ",newState);
+  if(action.type === SET_MODAL){
+    console.log("AppReducer-setModal",action.payload);
+    const bookModal = state.originalBooks.filter((book, i)=>{
+      if(book.id == action.payload){
+        return book;
+      }
+    })[0];
+
+    newState = {
+      ...newState,
+      bookModal
+    };
+
+  }
+
+  console.log("Salida del Reducer con NewState: ",newState);
   return newState;
 }
