@@ -24,7 +24,7 @@ class OnlineLibrary extends React.Component{
 		}else{
 			component = (
 				<div>
-					<DetailBook openModal={this.props.openModal}/>
+					<DetailBook />
 					<ListBooks books={books}/>
 				</div>
 			)
@@ -35,13 +35,6 @@ class OnlineLibrary extends React.Component{
 				{component}
 			</div>
 		)
-	}
-}
-
-const mapStateToProps = (state)=>{
-	const {openModal} = state.AppReducer;
-	return{
-		openModal
 	}
 }
 

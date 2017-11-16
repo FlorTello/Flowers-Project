@@ -5,7 +5,7 @@ import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
-import {SetOpenModal} from '../../actions'
+import {toggleModal,setModal} from '../../actions';
 
 
 const styles = {
@@ -26,33 +26,37 @@ const styles = {
 class ListBooks  extends React.Component {
 	constructor(pros){
 		super(pros);
+		this.handleClick = this.handleClick.bind(this);
 	}
 	
-	handleClickOpen = () => {
-		this.props.setOpenModal(true);
+	handleClick(e){
+		alert("click");
+		console.log(e.target.parentElement.parentElement.parentElement);
+		this.props.toggleModal();
+		this.props.setModal(e.target.parentElement.parentElement.parentElement.id);
 	  };
 	  
 	render(){
 		const {books} = this.props;
 		return(
 			<Grid container spacing={24}>
-				 {books.map((tile) => (
+				 {books.map((book) => (
 					 <Grid item xs={6} sm={6} style={styles.item}>
-					 <Card>
+					 <Card id={book.id}>
 						 <CardMedia
 							 style={styles.media}
-							 image={tile.img}
-							 title="Contemplative Reptile"
+							 image={book.img}
+							 title="Contemplative Repbook"
 						 />
 						 <CardContent>
-						 <h4>{tile.title}</h4>
-						 <p>{tile.subtitle}</p>
+						 <h4>{book.title}</h4>
+						 <p>{book.subtitle}</p>
 						 </CardContent>
 						 <CardActions>
 							 <Button dense color="primary">
 								 Share
 							 </Button>
-							 <Button dense color="primary" onClick={this.handleClickOpen}>
+							 <Button dense color="primary" onClick={this.handleClick}>
 								 Learn More
 							 </Button>
 						 </CardActions>
@@ -65,24 +69,20 @@ class ListBooks  extends React.Component {
 
 }
 
-const mapStateToProps = (state)=>{
-	const {openModal} = state.AppReducer;
-	return{
-		openModal
-	}
-}
-
 const mapDispatchToProps = (dispatch)=>{
 	return{
-		setOpenModal(open){
-			dispatch(SetOpenModal(open))
+		setModal(id){
+			dispatch(setModal(id))
+		},
+		toggleModal(){
+			dispatch(toggleModal())
 		}
 	}
 }
 
 const ListBooksWithRedux = connect(
-	mapStateToProps,
+	null,
 	mapDispatchToProps
-	)(ListBooks)
+)(ListBooks)
 
 export default ListBooksWithRedux

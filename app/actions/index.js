@@ -1,4 +1,4 @@
-import {FILTER_TEXT_CHANGED,FILTER_CATEGORY_SELECTED,SET_MODAL,OPEN_MODAL} from './types'
+import {FILTER_TEXT_CHANGED,FILTER_CATEGORY_SELECTED,SET_MODAL,TOGGLE_MODAL} from './types'
 
 //action creators
 export const filterTextChanged = (text)=>{
@@ -15,16 +15,15 @@ export const filterCategorySelected = (id)=>{
 	}
 }
 
-export const ViewDatilBookSelected = (id)=>{
+export const setModal = (id)=>{
 	return{
 		type: SET_MODAL,
 		payload: id
 	}
 }
 
-export const SetOpenModal = (newState)=>{
+export const toggleModal = ()=>{
 	return{
-		type: OPEN_MODAL,
-		payload: newState
+		type: TOGGLE_MODAL
 	}
 }

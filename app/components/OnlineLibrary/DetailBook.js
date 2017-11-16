@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {detailBookSelected} from '../../actions'
+import {toggleModal} from '../../actions'
 import Button from 'material-ui/Button'
 import Dialog, {
   DialogActions,
@@ -13,34 +13,35 @@ import Dialog, {
 
 class DetailBook extends React.Component{
     constructor(props){
-        super(props);
-        this.state = {
-            open: false,
-          };
+      super(props);
+      this.handleRequestClose = this.handleRequestClose.bind(this);
     }
-    
-
-    
-      handleRequestClose = () => {
-        this.setState({ open: this.props.openModal });
-      };
+       
+    handleRequestClose(){
+      this.props.toggleModal();
+      console.log("cerrar")
+    };
 
     render(){
+        const { fullScreen, stateModal, bookModal } = this.props;
         console.log(this.props);
-        const { fullScreen } = this.props;
-
 
         return (
                 <div>
                     <Dialog
                     fullScreen={fullScreen}
-                    open={this.state.open}
+                    open={stateModal}
                     onRequestClose={this.handleRequestClose}
                     >
                     <DialogTitle>{"Use Google's location service?"}</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
-                        Description
+                          <p>
+                            <span>Author: </span>
+                            {bookModal && bookModal.author}
+                          </p>
+                          <p>Description</p>
+                          <p>{bookModal && bookModal.description}</p>
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
@@ -52,4 +53,20 @@ class DetailBook extends React.Component{
     }
 }
 
-export default DetailBook;
+const mapStateToProps = (state)=>{
+  const {stateModal,bookModal} = state.AppReducer;
+  return {
+    stateModal,
+    bookModal
+  }
+}
+
+const mapDispatchToProps = (dispatch)=>{
+  return{
+    toggleModal(){
+      dispatch(toggleModal())
+    }
+  }
+}
+const DetailBookWithRedux = connect(mapStateToProps, mapDispatchToProps)(DetailBook)
+export default DetailBookWithRedux;
