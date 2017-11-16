@@ -11,7 +11,7 @@ import Dialog, {
   withMobileDialog,
 } from 'material-ui/Dialog';
 
-class DetailBook extends React.Component{
+class Modal extends React.Component{
     constructor(props){
       super(props);
       this.handleRequestClose = this.handleRequestClose.bind(this);
@@ -68,5 +68,5 @@ const mapDispatchToProps = (dispatch)=>{
     }
   }
 }
-const DetailBookWithRedux = connect(mapStateToProps, mapDispatchToProps)(DetailBook)
-export default DetailBookWithRedux;
+const ModalWithRedux = connect(mapStateToProps, mapDispatchToProps)(Modal)
+export default ModalWithRedux;

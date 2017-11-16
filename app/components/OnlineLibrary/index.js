@@ -3,15 +3,15 @@ import {connect} from 'react-redux'
 import ListBooks from './ListBooks'
 import SearchBar from './SearchBar'
 import ListCategories from './ListCategories'
-import DetailBook from './DetailBook'
+import Modal from './Modal'
 
 class OnlineLibrary extends React.Component{
 	constructor(props){
 		super(props);
-	}
+	};
+
 	render(){
 		const {books,categories,categorieSelected} = this.props;
-		console.log("categories ", categorieSelected);
 		let component = null;
 		
 		if(categorieSelected!=null){
@@ -24,7 +24,7 @@ class OnlineLibrary extends React.Component{
 		}else{
 			component = (
 				<div>
-					<DetailBook />
+					<Modal />
 					<ListBooks books={books}/>
 				</div>
 			)

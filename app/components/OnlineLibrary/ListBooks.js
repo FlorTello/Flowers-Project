@@ -1,43 +1,42 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { withStyles } from 'material-ui/styles';
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
-import Button from 'material-ui/Button';
-import Typography from 'material-ui/Typography';
-import Grid from 'material-ui/Grid';
-import {toggleModal,setModal} from '../../actions';
 
+import { withStyles } from 'material-ui/styles'
+import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
+import Button from 'material-ui/Button'
+import Typography from 'material-ui/Typography'
+import Grid from 'material-ui/Grid'
 
-const styles = {
-  root: {
-    flexGrow: 1,
-       marginTop: 30,
-  },
-  item: {
-   padding: 16,
-   textAlign: 'center',
- },
- media: {
-   height:574
- }
-
-};
+import {toggleModal,setModal} from '../../actions'
 
 class ListBooks  extends React.Component {
 	constructor(pros){
 		super(pros);
 		this.handleClick = this.handleClick.bind(this);
-	}
+	};
 	
 	handleClick(e){
-		alert("click");
-		console.log(e.target.parentElement.parentElement.parentElement);
+		console.log(e.currentTarget);
 		this.props.toggleModal();
-		this.props.setModal(e.target.parentElement.parentElement.parentElement.id);
-	  };
+		this.props.setModal(e.currentTarget.parentElement.parentElement.id);
+	};
 	  
 	render(){
 		const {books} = this.props;
+		const styles = {
+			root: {
+				flexGrow: 1,
+				marginTop: 30
+			},
+			item: {
+				padding: 16,
+				textAlign: 'center'
+			},
+			media: {
+				height:574
+			}
+		};
+		
 		return(
 			<Grid container spacing={24}>
 				 {books.map((book) => (
