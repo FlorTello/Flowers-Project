@@ -24,9 +24,9 @@ class SearchBar extends React.Component{
 		return(
 			<form style={style.form}>
 				<TextField
-						placeholder= "Read Now"
-						value={this.props.filterText}
-						onChange={this.handleChange}
+					placeholder= "Read Now"
+					value={this.props.filterText}
+					onChange={this.handleChange}
 				/>
 			</form>
 		)
@@ -51,5 +51,6 @@ const mapDispatchToProps = (dispatch)=>{
 const SearchBarWithRedux = connect(
 	mapStateToProps,
 	mapDispatchToProps
-	)(SearchBar)
+)(SearchBar)
+
 export default SearchBarWithRedux

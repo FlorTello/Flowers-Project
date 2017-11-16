@@ -9,6 +9,7 @@ class OnlineLibrary extends React.Component{
 	constructor(props){
 		super(props);
 	}
+
 	render(){
 		const {books,categories,categorySelected} = this.props;
 		let children = null;
@@ -34,13 +35,16 @@ class OnlineLibrary extends React.Component{
 
 const mapStateToProps = (state) => {
   const {
-    filteredSearchBooks
+    filteredSearchBooks,
+    categorySelected
   } = state.AppReducer
 
   return {
-    books: filteredSearchBooks
+    books: filteredSearchBooks,
+    categorySelected
   }
 }
 
 const OnlineLibraryWithRedux = connect(mapStateToProps)(OnlineLibrary)
+
 export default OnlineLibraryWithRedux

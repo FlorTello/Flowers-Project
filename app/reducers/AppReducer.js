@@ -1,4 +1,8 @@
-import {FILTER_TEXT_CHANGED, FILTER_CATEGORY_SELECTED} from '../actions/types'
+import {
+  FILTER_TEXT_CHANGED,
+  FILTER_CATEGORY_SELECTED,
+  SET_PAGE
+} from '../actions/types'
 
 // Supongamos que esto recibimos del API en forma JSON
 const BOOKS = [
@@ -112,13 +116,11 @@ const BOOKS = [
       categories:[4,5]
 
     }
-  ]
-
+]
 
 const INITIAL_STATE = {
+  page: 1,
   originalBooks: BOOKS, // lista original de productos
-  filterText: '', //texto que ingresa el usuario para buscar
-  filteredSearchBooks : [], //inicialmente no hay ningun filtro
   categories :[
     {
       id: 1,
@@ -157,13 +159,16 @@ const INITIAL_STATE = {
       width: '30%'
     }
   ],
-  categorySelected: null,
-  filteredBooksCategory:[]
+  categorieSelected: null,
+  filteredBooksCategory:[],
+  filterText: '', //texto que ingresa el usuario para buscar
+  filteredSearchBooks : []//inicialmente no hay ningun filtro
 }
 
 //Este es nuestro AppReducer
 export default (state = INITIAL_STATE, action) => {
   let newState = {}
+
   switch (action.type) {
     case FILTER_TEXT_CHANGED:
       newState = {
@@ -177,12 +182,18 @@ export default (state = INITIAL_STATE, action) => {
         categorySelected: action.payload
       }
       break;
+    case SET_PAGE:
+      newState = {
+        ...state,
+        page: action.payload
+      }
+      break;
     default:
       return state
   }
 
   if(action.type === FILTER_TEXT_CHANGED){
-    console.log("AppReducer: ",action.payload)
+    console.log("AppReducer-filterTextChanged: ",action.payload)
 
     const filteredSearchBooks = state.filteredBooksCategory.filter((book, i)=>{
       if(book.title.toLowerCase().indexOf(action.payload.trim().toLowerCase())!=-1 || book.author.toLowerCase().indexOf(action.payload.trim().toLowerCase())!=-1){
@@ -210,6 +221,10 @@ export default (state = INITIAL_STATE, action) => {
       filteredSearchBooks:filteredBooksCategory
     }
 
+  }
+
+  if(action.type === SET_PAGE){
+    console.log("AppReducer- cambiando de componente")
   }
 
   console.log("newState: ",newState);
