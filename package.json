@@ -1,9 +1,9 @@
 {
-  "name": "laboratoria-react-semana-03",
+  "name": "Online Library",
   "version": "1.0.0",
-  "description": "Semana 3 Global State, Lifecycle , OOP",
+  "description": "Visualizacion de libros por categories",
   "main": "index.js",
-  "author": "klujanrosas",
+  "author": "flowers",
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.2",
