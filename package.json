@@ -1,5 +1,5 @@
 {
-  "name": "Online Library",
+  "name": "OnlineLibrary",
   "version": "1.0.0",
   "description": "Visualizacion de libros por categories",
   "main": "index.js",
