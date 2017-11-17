@@ -41,8 +41,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack --config webpack.config.prod.js --progress --profile --colors",
-    "deploy": "gh-pages -d ./dist -b gh-pages",
-    "clean": "del-cli ./dist/*.min..css && del-cli ./dist/*.min.js",
+    "deploy": "npm run build && gh-pages -d public",
+    "clean": "del-cli ./public/*.min..css && del-cli ./public/*.min.js",
     "lint": "eslint ./app/"
   }
 }

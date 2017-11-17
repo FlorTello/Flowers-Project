@@ -7,7 +7,7 @@ module.exports = {
   context: resolve(__dirname, 'app'),
   output: {
     filename: 'app.min.js',
-    path: resolve(__dirname, 'dist'),
+    path: resolve(__dirname, 'public'),
     publicPath: ''
   },
   plugins: [
