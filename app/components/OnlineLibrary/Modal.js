@@ -41,13 +41,20 @@ class Modal extends React.Component{
                   {bookModal && bookModal.author}
                 </p>
                 <p><strong>Description:</strong></p>
-                <p>{bookModal && bookModal.description}</p>
+                <p>
+                  {bookModal && bookModal.description}
+                </p>
               </DialogContentText>
             </DialogContent>
           </Dialog>
       </div>
     );
   }
+}
+
+Modal.propTypes = {
+  stateModal: PropTypes.bool,
+  bookModal: PropTypes.object
 }
 
 const mapStateToProps = (state)=>{

@@ -1,13 +1,14 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import { withStyles } from 'material-ui/styles'
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
-import Button from 'material-ui/Button'
-import Typography from 'material-ui/Typography'
-import Grid from 'material-ui/Grid'
+import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
+import Button from 'material-ui/Button';
+import Typography from 'material-ui/Typography';
+import Grid from 'material-ui/Grid';
 
-import {connect} from 'react-redux'
-import {toggleModal,setModal} from '../../actions'
+import {connect} from 'react-redux';
+import {toggleModal,setModal} from '../../actions';
 
 class ItemBook extends React.Component{
 	constructor(props){
@@ -61,6 +62,22 @@ class ItemBook extends React.Component{
 			</Grid>
 		)
 	};
+}
+
+ItemBook.propTypes = {
+	book: PropTypes.shape({
+		id: PropTypes.string,
+    	title: PropTypes.string,
+		subtitle: PropTypes.string,
+		author: PropTypes.string,
+		published: PropTypes.string,
+		publisher: PropTypes.string,
+		pages: PropTypes.number,
+		description: PropTypes.string,
+		website: PropTypes.string,
+		img: PropTypes.string,
+		categories: PropTypes.array
+	})
 }
 
 const mapDispatchToProps = (dispatch)=>{

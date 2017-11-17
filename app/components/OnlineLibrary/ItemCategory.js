@@ -1,7 +1,7 @@
-import React from 'react'
-import {connect} from 'react-redux'
-
-import {filterCategorySelected} from '../../actions'
+import React from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import {filterCategorySelected} from '../../actions';
 
 class ItemCategory extends React.Component{
 	constructor(props){
@@ -27,6 +27,15 @@ class ItemCategory extends React.Component{
 			</li>
 		)
 	};
+}
+
+ItemCategory.propTypes = {
+	category: PropTypes.shape({
+		id: PropTypes.number,
+		url: PropTypes.string,
+		title: PropTypes.string,
+		width: PropTypes.string
+	})
 }
 
 const mapDispatchToProps = (dispatch)=>{

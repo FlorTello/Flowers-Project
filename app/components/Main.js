@@ -40,6 +40,12 @@ class Main extends React.Component{
 	
 }
 
+Main.propTypes = {
+	books: PropTypes.arrayOf(PropTypes.object),
+	categories: PropTypes.arrayOf(PropTypes.object),
+	page: PropTypes.number
+}
+
 const mapStateToProps = (state) => {
   const {filteredBooksCategory,categories,page} = state.AppReducer
 

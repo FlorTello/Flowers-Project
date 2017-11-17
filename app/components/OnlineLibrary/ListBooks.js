@@ -1,5 +1,6 @@
-import React from 'react'
-import ItemBook from './ItemBook'
+import React from 'react';
+import PropTypes  from 'prop-types';
+import ItemBook from './ItemBook';
 
 import { withStyles } from 'material-ui/styles'
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
@@ -17,6 +18,10 @@ const ListBooks = ({books}) => {
 			{item}
 		</Grid>
 	);
+}
+
+ListBooks.propTypes = {
+	books: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default ListBooks

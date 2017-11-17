@@ -127,7 +127,7 @@ const INITIAL_STATE = {
       id: 1,
       url: 'https://image.freepik.com/free-photo/web-design-concepts-with-blurred-background_1134-82.jpg',
       title: 'Design',
-      width: '40%',
+      width: '30%',
     },
     {
       id: 2,

@@ -1,10 +1,11 @@
-import React from 'react'
-import {connect} from 'react-redux'
+import React from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
-import ListBooks from './ListBooks'
-import SearchBar from './SearchBar'
-import ListCategories from './ListCategories'
-import Modal from './Modal'
+import ListBooks from './ListBooks';
+import SearchBar from './SearchBar';
+import ListCategories from './ListCategories';
+import Modal from './Modal';
 
 class OnlineLibrary extends React.Component{
 	constructor(props){
@@ -36,6 +37,12 @@ class OnlineLibrary extends React.Component{
 			</div>
 		)
 	};
+}
+
+OnlineLibrary.propTypes = {
+	books:PropTypes.arrayOf(PropTypes.object),
+	categories: PropTypes.arrayOf(PropTypes.object),
+	categorySelected: PropTypes.string
 }
 
 const mapStateToProps = (state) => {

@@ -15,4 +15,8 @@ const ListCategories =({categories}) => {
 	);
 }
 
+ListCategories.propTypes = {
+	categories: PropTypes.arrayOf(PropTypes.object).isRequired
+}
+
 export default ListCategories
