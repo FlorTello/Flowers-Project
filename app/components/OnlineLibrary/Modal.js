@@ -17,7 +17,7 @@ class Modal extends React.Component{
     super(props);
     this.handleRequestClose = this.handleRequestClose.bind(this);
   };
-     
+
   handleRequestClose(){
     this.props.toggleModal();
     console.log("cerrar")
@@ -33,13 +33,14 @@ class Modal extends React.Component{
             open={stateModal}
             onRequestClose={this.handleRequestClose}
           >
-            <DialogTitle>{"Titulo del Modal"}</DialogTitle>
+            <DialogTitle>{bookModal && bookModal.title}</DialogTitle>
             <DialogContent>
               <DialogContentText>
                 <p>
                   <strong>Author: </strong>
                   {bookModal && bookModal.author}
                 </p>
+                <p>N° de páginas : {bookModal && bookModal.pages}</p>
                 <p><strong>Description:</strong></p>
                 <p>
                   {bookModal && bookModal.description}

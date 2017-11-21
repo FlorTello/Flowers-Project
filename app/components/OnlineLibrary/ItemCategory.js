@@ -86,8 +86,8 @@ class ItemCategory extends React.Component{
 
 	handleClick (e){
 		console.log('evento');
-		console.log(e);
-		this.props.setSelectedCategory(e.target.id)
+		console.log(e.currentTarget);
+		this.props.setSelectedCategory(e.currentTarget.id)
 	};
 
 	render(){
@@ -95,10 +95,9 @@ class ItemCategory extends React.Component{
 		const {category} = this.props;
 		console.log("Componente ItemCategory: ",this.props);
 		return(
-				<Grid item xs={6} sm={6} >
+				<Grid item xs={6} sm={6} id={category.id} onClick={this.handleClick}>
 	        <ButtonBase
 	          focusRipple
-						key = {category.title}
 	          className={classes.image}
 	          style={{
 	            width: category.width,
@@ -112,7 +111,7 @@ class ItemCategory extends React.Component{
 	            }}
 	          />
 	          <div className={classes.imageBackdrop} />
-	          <div className={classes.imageButton} id={category.id} onClick={this.handleClick}>
+	          <div className={classes.imageButton}>
 	            <Typography
 	              component="h3"
 	              type="subheading"
@@ -141,7 +140,6 @@ ItemCategory.propTypes = {
 const mapDispatchToProps = (dispatch)=>{
 	return{
 		setSelectedCategory(newId){
-			debugger;
 			dispatch(filterCategorySelected(newId))
 		}
 	}

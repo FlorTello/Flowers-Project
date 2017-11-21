@@ -31,7 +31,7 @@ const BOOKS = [
       pages: 254,
       description: "With Learning JavaScript Design Patterns, you'll learn how to write beautiful, structured, and maintainable JavaScript by applying classical and modern design patterns to the language. If you want to keep your code efficient, more manageable, and up-to-date with the latest best practices, this book is for you.",
       website: "http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/",
-      img: "http://eloquentjavascript.net/img/cover.png",
+      img: "https://addyosmani.com/resources/essentialjsdesignpatterns/cover/cover.jpg",
       categories: [3.4]
 
     },
@@ -45,7 +45,7 @@ const BOOKS = [
       pages: 460,
       description: "Like it or not, JavaScript is everywhere these days-from browser to server to mobile-and now you, too, need to learn the language or dive deeper than you have. This concise book guides you into and through JavaScript, written by a veteran programmer who once found himself in the same position.",
       website: "http://speakingjs.com/",
-      img: "http://eloquentjavascript.net/img/cover.png",
+      img: "http://speakingjs.com/es5/orm_front_cover.jpg",
       categories: [5,6]
 
     },
@@ -59,7 +59,7 @@ const BOOKS = [
       pages: 254,
       description: "Take advantage of JavaScript's power to build robust web-scale or enterprise applications that are easy to extend and maintain. By applying the design patterns outlined in this practical book, experienced JavaScript developers will learn how to write flexible and resilient code that's easier-yes, easier-to work with as your code base grows.",
       website: "http://chimera.labs.oreilly.com/books/1234000000262/index.html",
-      img: "http://eloquentjavascript.net/img/cover.png",
+      img: "http://orm-other.s3.amazonaws.com/progjsappssplash/cover.jpg",
       categories:[1,2]
 
     },
@@ -73,7 +73,7 @@ const BOOKS = [
       pages: 352,
       description: "ECMAScript 6 represents the biggest update to the core of JavaScript in the history of the language. In Understanding ECMAScript 6, expert developer Nicholas C. Zakas provides a complete guide to the object types, syntax, and other exciting changes that ECMAScript 6 brings to JavaScript.",
       website: "https://leanpub.com/understandinges6/read",
-      img: "http://eloquentjavascript.net/img/cover.png",
+      img: "https://www.gitbook.com/cover/book/penkzhou/understanding-ecmascript-6.jpg?build=1455767692076",
       categories:[3,4]
 
     },
@@ -101,7 +101,7 @@ const BOOKS = [
       pages: 234,
       description: "This pocket guide is the perfect on-the-job companion to Git, the distributed version control system. It provides a compact, readable introduction to Git for new users, as well as a reference to common commands and procedures for those of you with Git experience.",
       website: "http://chimera.labs.oreilly.com/books/1230000000561/index.html",
-      img: "http://eloquentjavascript.net/img/cover.png",
+      img: "https://covers.oreillystatic.com/images/0636920024972/lrg.jpg",
       categories:[2,3]
     },
     {
@@ -114,7 +114,7 @@ const BOOKS = [
       pages: 538,
       description: "Design and build Web APIs for a broad range of clients—including browsers and mobile devices—that can adapt to change over time. This practical, hands-on guide takes you through the theory and tools you need to build evolvable HTTP services with Microsoft’s ASP.NET Web API framework. In the process, you’ll learn how design and implement a real-world Web API.",
       website: "http://chimera.labs.oreilly.com/books/1234000001708/index.html",
-      img: "http://eloquentjavascript.net/img/cover.png",
+      img: "http://orm-other.s3.amazonaws.com/designevolvewebapisplash/designevolvecover.jpg",
       categories:[4,5]
 
     }
@@ -166,7 +166,7 @@ const INITIAL_STATE = {
   filterText: '', //texto que ingresa el usuario para buscar
   filteredSearchBooks : [],//inicialmente no hay ningun filtro
   bookModal: null,
-  stateModal: false 
+  stateModal: false
 }
 
 //Este es nuestro AppReducer

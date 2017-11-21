@@ -15,7 +15,7 @@ class ItemBook extends React.Component{
 		super(props);
 		this.handleClick = this.handleClick.bind(this);
 	};
-	
+
 	handleClick(e){
 		console.log(e.currentTarget);
 		this.props.toggleModal();
@@ -34,12 +34,13 @@ class ItemBook extends React.Component{
 				textAlign: 'center'
 			},
 			media: {
+			 'background-size': 'contain',
 				height:574
 			}
 		};
 
 		return(
-			<Grid item xs={6} sm={6} style={styles.item}>
+			<Grid item xs={12} sm={6} style={styles.item}>
 				<Card id={book.id}>
 					<CardMedia
 						style={styles.media}
